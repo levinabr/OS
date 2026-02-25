@@ -1,2 +1,2 @@
-# COA
-coa outputs and inputs
+# OS
+OS outputs and inputs
