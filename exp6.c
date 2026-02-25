@@ -11,7 +11,6 @@ int main() {
         printf("\nConfiguring Process %d (Auto-assigned PID: %d):\n", i + 1, p[i]);
         printf("Enter Arrival Time : ");
         scanf("%d", &a[i]);
-
         printf("Enter Burst Time   : ");
         scanf("%d", &b[i]);
 
@@ -37,12 +36,10 @@ int main() {
         printf("\t%d\t%d\t%d\t%d\t%d\t%d\n", p[k], a[k], b[k], ct[k], tat[k], wt[k]);
     }
     printf("Average Waiting Time (FCFS) = %.2f\n", avg_wt_fcfs);
-
     for(int i = 0; i < n; i++) rt[i] = b[i];
     int complete = 0;
     time = 0;
     float avg_wt_srtf = 0;
-
     while(complete != n) {
         int shortest = -1, min = 9999;
         for(int i = 0; i < n; i++) {
@@ -63,18 +60,15 @@ int main() {
         }
     }
     avg_wt_srtf /= n;
-
     printf("\n--- SRTF (Preemptive) Output ---\n");
     printf("\tPID\tAT\tBT\tCT\tTAT\tWT\n");
     for(int k=0; k<n; k++) {
         printf("\t%d\t%d\t%d\t%d\t%d\t%d\n", p[k], a[k], b[k], ct[k], tat[k], wt[k]);
     }
     printf("Average Waiting Time (SRTF) = %.2f\n", avg_wt_srtf);
-
     for(int i = 0; i < n; i++) done[i] = 0;
     time = 0; complete = 0;
     float avg_wt_priority = 0;
-
     while(complete != n) {
         int highest = -1, maxp = -1;
         for(int i = 0; i < n; i++) {
@@ -99,7 +93,6 @@ int main() {
         printf("\t%d\t%d\t%d\t%d\t%d\t%d\n", p[k], a[k], b[k], ct[k], tat[k], wt[k]);
     }
     printf("Average Waiting Time (Priority) = %.2f\n", avg_wt_priority);
-
     for(int i = 0; i < n; i++) rt[i] = b[i];
     time = 0; complete = 0;
     float avg_wt_rr = 0;
@@ -137,8 +130,6 @@ int main() {
     if(avg_wt_srtf < min_val) { min_val = avg_wt_srtf; sprintf(algo_name, "SRTF"); }
     if(avg_wt_priority < min_val) { min_val = avg_wt_priority; sprintf(algo_name, "Priority"); }
     if(avg_wt_rr < min_val) { min_val = avg_wt_rr; sprintf(algo_name, "Round Robin"); }
-
     printf("The best algorithm for this set is %s with an Average WT of %.2f\n", algo_name, min_val);
-
     return 0;
 }
